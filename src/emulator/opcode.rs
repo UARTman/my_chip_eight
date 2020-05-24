@@ -148,13 +148,13 @@ pub enum OpCode {
         register_y: u8,
     },
     /// `0x8XY6`, where
-    /// - `X` is `register_x`
+    /// - `X` is `register`
     /// - `Y` is not used
     ///
     /// Sets `VX` to a `VX >> 1`
     /// `VF` is set to `VX`'s least significant bit. TODO: Try to understand what this means
     RegRightShift {
-        register_x: u8,
+        register: u8,
         // register_y: u8,
     },
     /// `0x8XY7`, where
@@ -168,13 +168,13 @@ pub enum OpCode {
         register_y: u8,
     },
     /// `0x8XYE`, where
-    /// - `X` is `register_x`
+    /// - `X` is `register`
     /// - `Y` is not used
     ///
     /// Sets `VX` to a `VX << 1`
     /// `VF` is set to `VX`'s most significant bit. TODO: Try to understand what this means
     RegLeftShift {
-        register_x: u8,
+        register: u8,
         // register_y: u8,
     },
     /// `0x9XY0`, where
