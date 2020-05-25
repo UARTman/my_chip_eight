@@ -1,3 +1,5 @@
+use crate::emulator::opcode::OpCode::*;
+
 /// Represents a processor command.
 ///
 /// Exists for purposes of pattern matching.
@@ -207,8 +209,8 @@ pub enum OpCode {
     ///
     /// Sets `VX` to `rand() & NN` where rand is in (0..255).
     RandToReg {
+        register: u8,
         constant: u8,
-        register: u8
     },
     /// `0xDXYN`, where
     /// - `X` is `coord_x`
@@ -223,7 +225,7 @@ pub enum OpCode {
     DisplaySprite {
         coord_x: u8,
         coord_y: u8,
-        height: u8
+        height: u8,
     },
     /// `0xEX9E`, where
     /// - `X` is `register`
@@ -284,7 +286,7 @@ pub enum OpCode {
     ///
     /// Sets `I` to the location of the sprite for the character in `VX`.
     /// Characters 0-F (in hexadecimal) are represented by a 4x5 font.
-    MemMoveCharReg {
+    MemMoveToRegChar {
         register: u8
     },
     /// `0xFX33`, where
@@ -314,5 +316,271 @@ pub enum OpCode {
     /// The offset from `I` is increased by 1 for each value written, but `I` itself is left unmodified.
     RegLoad {
         register: u8
+    },
+}
+
+fn combine(first_byte: u8, second_byte: u8) -> u16 {
+    ((first_byte as u16) << 8) | second_byte as u16
+}
+
+impl From<(u8, u8)> for OpCode {
+    /// Makes an OpCode object from two (consequent) bytes.
+    ///
+    /// Implemented:
+    /// - [x] _NativeCall
+    /// - [x] ClearScreen
+    /// - [x] Return
+    /// - [x] Goto
+    /// - [x] Subroutine
+    /// - [x] SkipNextIfRegEqualToConst
+    /// - [x] SkipNextIfRegNotEqualToConst
+    /// - [x] SkipNextIfRegEqualToReg
+    /// - [x] RegSetConst
+    /// - [x] RegAddConst
+    /// - [x] RegMov
+    /// - [x] RegBitwiseOr
+    /// - [x] RegBitwiseAnd
+    /// - [x] RegBitwiseXor
+    /// - [x] RegAdd
+    /// - [x] RegSub
+    /// - [x] RegRightShift
+    /// - [x] RegReverseSub
+    /// - [x] RegLeftShift
+    /// - [x] SkipNextIfRegNotEqualToReg
+    /// - [x] Mem
+    /// - [x] JumpRegZero
+    /// - [x] RandToReg
+    /// - [x] DisplaySprite
+    /// - [x] SkipNextIfRegKeyPressed
+    /// - [x] SkipNextIfRegKeyNotPressed
+    /// - [x] SetRegToDelayTimer
+    /// - [x] SetRegToKeyPressed
+    /// - [x] SetDelayTimerToReg
+    /// - [x] SetSoundTimerToReg
+    /// - [x] MemAddReg
+    /// - [x] MemMoveToCharReg
+    /// - [x] StoreBCD
+    /// - [x] RegDump
+    /// - [x] RegLoad
+    fn from((first_byte, second_byte): (u8, u8)) -> Self {
+        let full_repr = combine(first_byte, second_byte);
+        let first_digit = first_byte >> 4;
+        let second_digit = first_byte % (1 << 4);
+        let third_digit = second_byte >> 4;
+        let fourth_digit = second_byte % (1 << 4);
+        let target = combine(second_digit, second_byte);
+        match first_digit {
+            // ClearScreen, Return, _NativeCall
+            0x0 => {
+                match second_byte {
+                    0xE0 => { ClearScreen }
+                    0xEE => { Return }
+                    _ => {
+                        _NativeCall {
+                            target
+                        }
+                    }
+                }
+            }
+            // Goto
+            0x1 => {
+                Goto {
+                    target
+                }
+            }
+            // Subroutine
+            0x2 => {
+                Subroutine {
+                    target
+                }
+            }
+            // SkipNextIfRegEqualToConst
+            0x3 => {
+                SkipNextIfRegEqualToConst {
+                    register: second_digit,
+                    constant: second_byte,
+                }
+            }
+            // SkipNextIfRegNotEqualToConst
+            0x4 => {
+                SkipNextIfRegNotEqualToConst {
+                    register: second_digit,
+                    constant: second_byte,
+                }
+            }
+            // SkipNextIfRegEqualToReg
+            0x5 => {
+                SkipNextIfRegEqualToReg {
+                    register_x: second_digit,
+                    register_y: third_digit,
+                }
+            }
+            // RegSetConst
+            0x6 => {
+                RegSetConst {
+                    register: second_digit,
+                    constant: second_byte,
+                }
+            }
+            // RegAddConst
+            0x7 => {
+                RegAddConst {
+                    register: second_digit,
+                    constant: second_byte,
+                }
+            }
+            // RegMov, RegBitwiseOr, RegBitwiseAnd, RegBitwiseXor, RegAdd,
+            // RegSub, RegRightShift, RegReverseSub, RegLeftShift
+            0x8 => {
+                match fourth_digit {
+                    0x0 => {
+                        RegMov {
+                            register_x: second_digit,
+                            register_y: third_digit,
+                        }
+                    }
+                    0x1 => {
+                        RegBitwiseOr {
+                            register_x: second_digit,
+                            register_y: third_digit,
+                        }
+                    }
+                    0x2 => {
+                        RegBitwiseAnd {
+                            register_x: second_digit,
+                            register_y: third_digit,
+                        }
+                    }
+                    0x3 => {
+                        RegBitwiseXor {
+                            register_x: second_digit,
+                            register_y: third_digit,
+                        }
+                    }
+                    0x4 => {
+                        RegAdd {
+                            register_x: second_digit,
+                            register_y: third_digit,
+                        }
+                    }
+                    0x5 => {
+                        RegSub {
+                            register_x: second_digit,
+                            register_y: third_digit,
+                        }
+                    }
+                    0x6 => {
+                        RegRightShift {
+                            register: second_digit
+                        }
+                    }
+                    0x7 => {
+                        RegReverseSub {
+                            register_x: second_digit,
+                            register_y: third_digit,
+                        }
+                    }
+                    0xE => {
+                        RegLeftShift {
+                            register: second_digit
+                        }
+                    }
+                    _ => panic!("Opcode {} not found", full_repr)
+                }
+            }
+            // SkipNextIfRegNotEqualToReg
+            0x9 => {
+                SkipNextIfRegNotEqualToReg {
+                    register_x: second_digit,
+                    register_y: third_digit,
+                }
+            }
+            // Mem
+            0xA => {
+                Mem {
+                    target
+                }
+            }
+            // JumpRegZero
+            0xB => {
+                JumpRegZero {
+                    target
+                }
+            }
+            // RandToReg
+            0xC => {
+                RandToReg {
+                    register: second_digit,
+                    constant: second_byte,
+                }
+            }
+            // DisplaySprite
+            0xD => {
+                DisplaySprite {
+                    coord_x: second_digit,
+                    coord_y: third_digit,
+                    height: fourth_digit,
+                }
+            }
+            // SkipNextIfRegKeyPressed, SkipNextIfRegKeyNotPressed
+            0xE => {
+                match second_byte {
+                    0x9E => {
+                        SkipNextIfRegKeyPressed {
+                            register: second_digit
+                        }
+                    }
+                    0xA1 => {
+                        SkipNextIfRegKeyNotPressed {
+                            register: second_digit
+                        }
+                    }
+                    _ => panic!("Opcode {} not found", full_repr)
+                }
+            }
+            // SetRegToDelayTimer, SetRegToKeyPressed, SetDelayTimerToReg, SetSoundTimerToReg, MemAddReg,
+            // MemMoveToRegChar, StoreBCD, RegDump, RegLoad
+            0xF => {
+                match second_byte {
+                    0x15 => {
+                        SetDelayTimerToReg {
+                            register: second_digit
+                        }
+                    }
+                    0x18 => {
+                        SetSoundTimerToReg {
+                            register: second_digit
+                        }
+                    }
+                    0x1E => {
+                        MemAddReg {
+                            register: second_digit
+                        }
+                    }
+                    0x29 => {
+                        MemMoveToRegChar {
+                            register: second_digit
+                        }
+                    }
+                    0x33 => {
+                        StoreBCD {
+                            register: second_digit
+                        }
+                    }
+                    0x55 => {
+                        RegDump {
+                            register: second_digit
+                        }
+                    }
+                    0x65 => {
+                        RegLoad {
+                            register: second_digit
+                        }
+                    }
+                    _ => panic!("Opcode {} not found", full_repr)
+                }
+            }
+            _ => panic!("First digit has a value of {}, while only 0x0..0xF are accepted", first_byte)
+        }
     }
 }
