@@ -36,7 +36,15 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7459ed9-f711-439b-a318-116828dddad8" name="Default Changelist" comment="Add testing to all opcodes." />
+    <list default="true" id="d7459ed9-f711-439b-a318-116828dddad8" name="Default Changelist" comment="Add .idea">
+      <change afterPath="$PROJECT_DIR$/src/emulator/command_execution.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/emulator/random.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/emulator/reg_ops.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/emulator/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/emulator/mod.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +52,13 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -154,7 +169,7 @@
       <option name="presentableId" value="Default" />
       <updated>1590338015007</updated>
       <workItem from="1590338016886" duration="7945000" />
-      <workItem from="1590386399652" duration="10480000" />
+      <workItem from="1590386399652" duration="15263000" />
     </task>
     <task id="LOCAL-00001" summary="Add GH Actions and Issue Template">
       <created>1590338161831</created>
@@ -205,7 +220,21 @@
       <option name="project" value="LOCAL" />
       <updated>1590397304064</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add .idea">
+      <created>1590398407644</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1590398407644</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add .idea">
+      <created>1590398430674</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1590398430674</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,41 +260,42 @@
     <MESSAGE value="Another fmt pass" />
     <MESSAGE value="Add some operations + tweak docs" />
     <MESSAGE value="Add testing to all opcodes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add testing to all opcodes." />
+    <MESSAGE value="Add .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add .idea" />
   </component>
   <component name="WindowStateProjectService">
     <state x="257" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590390559438">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
     <state x="257" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.863@0.0.1600.863" timestamp="1590390559438" />
-    <state x="607" y="150" width="380" height="564" key="#com.intellij.ide.util.MemberChooser" timestamp="1590386458795">
+    <state x="607" y="150" width="380" height="564" key="#com.intellij.ide.util.MemberChooser" timestamp="1590401947585">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state x="607" y="150" width="380" height="564" key="#com.intellij.ide.util.MemberChooser/0.0.1600.863@0.0.1600.863" timestamp="1590386458795" />
-    <state width="1554" height="214" key="GridCell.Tab.0.bottom" timestamp="1590397270374">
+    <state x="607" y="150" width="380" height="564" key="#com.intellij.ide.util.MemberChooser/0.0.1600.863@0.0.1600.863" timestamp="1590401947585" />
+    <state width="1554" height="214" key="GridCell.Tab.0.bottom" timestamp="1590402233229">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.bottom/0.0.1600.863@0.0.1600.863" timestamp="1590397270374" />
-    <state width="1554" height="214" key="GridCell.Tab.0.center" timestamp="1590397270374">
+    <state width="1554" height="214" key="GridCell.Tab.0.bottom/0.0.1600.863@0.0.1600.863" timestamp="1590402233229" />
+    <state width="1554" height="214" key="GridCell.Tab.0.center" timestamp="1590402233229">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.center/0.0.1600.863@0.0.1600.863" timestamp="1590397270374" />
-    <state width="1554" height="214" key="GridCell.Tab.0.left" timestamp="1590397270373">
+    <state width="1554" height="214" key="GridCell.Tab.0.center/0.0.1600.863@0.0.1600.863" timestamp="1590402233229" />
+    <state width="1554" height="214" key="GridCell.Tab.0.left" timestamp="1590402233228">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.left/0.0.1600.863@0.0.1600.863" timestamp="1590397270373" />
-    <state width="1554" height="214" key="GridCell.Tab.0.right" timestamp="1590397270374">
+    <state width="1554" height="214" key="GridCell.Tab.0.left/0.0.1600.863@0.0.1600.863" timestamp="1590402233228" />
+    <state width="1554" height="214" key="GridCell.Tab.0.right" timestamp="1590402233229">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.right/0.0.1600.863@0.0.1600.863" timestamp="1590397270374" />
+    <state width="1554" height="214" key="GridCell.Tab.0.right/0.0.1600.863@0.0.1600.863" timestamp="1590402233229" />
     <state x="295" y="67" key="SettingsEditor" timestamp="1590387634424">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
     <state x="295" y="67" key="SettingsEditor/0.0.1600.863@0.0.1600.863" timestamp="1590387634424" />
-    <state x="0" y="163" width="806" height="536" key="Vcs.Push.Dialog.v2" timestamp="1590397306578">
+    <state x="0" y="163" width="806" height="536" key="Vcs.Push.Dialog.v2" timestamp="1590398458163">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state x="0" y="163" width="806" height="536" key="Vcs.Push.Dialog.v2/0.0.1600.863@0.0.1600.863" timestamp="1590397306578" />
+    <state x="0" y="163" width="806" height="536" key="Vcs.Push.Dialog.v2/0.0.1600.863@0.0.1600.863" timestamp="1590398458163" />
     <state x="192" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590340898086">
       <screen x="0" y="0" width="1600" height="863" />
     </state>

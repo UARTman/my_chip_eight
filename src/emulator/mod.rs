@@ -1,6 +1,13 @@
+use crate::emulator::random::RNG;
+
+/// Contains opcode execution logic
+pub mod command_execution;
 /// Contains CHIP-8 Opcodes
 pub mod opcode;
-
+/// Contains RNG logic
+pub mod random;
+/// Contains register operation logic
+pub mod reg_ops;
 /// CHIP-8 Emulator
 pub struct Emulator {
     /// Represents CHIP-8 memory: 4096 bytes
@@ -26,4 +33,21 @@ pub struct Emulator {
     pub delay_timer: u8,
     /// Sound timer
     pub sound_timer: u8,
+    /// RNG
+    pub rng: RNG,
+}
+
+impl Default for Emulator {
+    fn default() -> Self {
+        Self {
+            memory: [0; 4096],
+            registers: [0; 16],
+            index_register: 0,
+            program_counter: 0,
+            stack: Vec::with_capacity(12),
+            delay_timer: 0,
+            sound_timer: 0,
+            rng: RNG::default(),
+        }
+    }
 }
