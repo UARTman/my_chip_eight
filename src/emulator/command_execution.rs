@@ -516,9 +516,23 @@ pub mod tests {
 
     /// Test RegDump execution
     #[test]
-    fn test_reg_dump() {}
+    fn test_reg_dump() {
+        let mut e = Emulator::default();
+        e.set_reg(0, 1);
+        e.set_reg(1, 2);
+        e.set_reg(2, 3);
+        e.execute_opcode(RegDump { register: 2 });
+        assert_eq!(e.memory[0..3], [1, 2, 3])
+    }
 
     /// Test RegLoad execution
     #[test]
-    fn test_reg_load() {}
+    fn test_reg_load() {
+        let mut e = Emulator::default();
+        e.memory[0] = 1;
+        e.memory[1] = 2;
+        e.memory[2] = 3;
+        e.execute_opcode(RegLoad { register: 2 });
+        assert_eq!(e.registers[0..3], [1, 2, 3]);
+    }
 }
