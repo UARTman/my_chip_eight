@@ -397,6 +397,12 @@ impl From<(u8, u8)> for OpCode {
             // SetRegToDelayTimer, SetRegToKeyPressed, SetDelayTimerToReg, SetSoundTimerToReg, MemAddReg,
             // MemMoveToRegChar, StoreBCD, RegDump, RegLoad
             0xF => match second_byte {
+                0x07 => SetRegToDelayTimer {
+                    register: second_digit,
+                },
+                0x0A => SetRegToKeyPressed {
+                    register: second_digit,
+                },
                 0x15 => SetDelayTimerToReg {
                     register: second_digit,
                 },
