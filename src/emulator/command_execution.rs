@@ -181,7 +181,11 @@ pub mod tests {
 
     /// Test ClearScreen execution
     #[test]
-    fn test_clear_screen() {}
+    #[should_panic]
+    fn test_clear_screen() {
+        let mut e = Emulator::default();
+        e.execute_opcode(ClearScreen);
+    }
 
     ///Test Return execution
     #[test]
@@ -455,15 +459,31 @@ pub mod tests {
 
     /// Test DisplaySprite execution
     #[test]
-    fn test_display_sprite() {}
+    #[should_panic]
+    fn test_display_sprite() {
+        let mut e = Emulator::default();
+        e.execute_opcode(DisplaySprite {
+            coord_x: 0,
+            coord_y: 0,
+            height: 0,
+        })
+    }
 
     /// Test SkipNextIfRegKeyPressed execution
     #[test]
-    fn test_skip_key() {}
+    #[should_panic]
+    fn test_skip_key() {
+        let mut e = Emulator::default();
+        e.execute_opcode(SkipNextIfRegKeyPressed { register: 0 })
+    }
 
     /// Test SkipNextIfRegKeyNotPressed execution
     #[test]
-    fn test_skip_not_key() {}
+    #[should_panic]
+    fn test_skip_not_key() {
+        let mut e = Emulator::default();
+        e.execute_opcode(SkipNextIfRegKeyNotPressed { register: 0 })
+    }
 
     /// Test SetRegToDelayTimer execution
     #[test]
@@ -508,11 +528,19 @@ pub mod tests {
 
     /// Test MemMoveToCharReg execution
     #[test]
-    fn test_mem_move_char() {}
+    #[should_panic]
+    fn test_mem_move_char() {
+        let mut e = Emulator::default();
+        e.execute_opcode(MemMoveToRegChar { register: 0 })
+    }
 
     /// Test StoreBCD execution
     #[test]
-    fn test_store_bcd() {}
+    #[should_panic]
+    fn test_store_bcd() {
+        let mut e = Emulator::default();
+        e.execute_opcode(StoreBCD { register: 0 })
+    }
 
     /// Test RegDump execution
     #[test]

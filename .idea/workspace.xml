@@ -36,8 +36,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7459ed9-f711-439b-a318-116828dddad8" name="Default Changelist" comment="Implement tests for working opcodes">
+    <list default="true" id="d7459ed9-f711-439b-a318-116828dddad8" name="Default Changelist" comment="Document some operations + remove main from coverage">
       <change beforePath="$PROJECT_DIR$/src/emulator/command_execution.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/emulator/command_execution.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/emulator/random.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/emulator/random.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +164,7 @@
       <option name="presentableId" value="Default" />
       <updated>1590338015007</updated>
       <workItem from="1590338016886" duration="7945000" />
-      <workItem from="1590386399652" duration="20117000" />
+      <workItem from="1590386399652" duration="20561000" />
     </task>
     <task id="LOCAL-00001" summary="Add GH Actions and Issue Template">
       <created>1590338161831</created>
@@ -242,7 +243,21 @@
       <option name="project" value="LOCAL" />
       <updated>1590406668390</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Implement tests for RegDump">
+      <created>1590407290980</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1590407290980</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Document some operations + remove main from coverage">
+      <created>1590407453634</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1590407453634</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +286,9 @@
     <MESSAGE value="Add .idea" />
     <MESSAGE value="Implement some opcode executions." />
     <MESSAGE value="Implement tests for working opcodes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement tests for working opcodes" />
+    <MESSAGE value="Implement tests for RegDump" />
+    <MESSAGE value="Document some operations + remove main from coverage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Document some operations + remove main from coverage" />
   </component>
   <component name="WindowStateProjectService">
     <state x="257" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590390559438">
@@ -286,22 +303,22 @@
       <screen x="0" y="0" width="1600" height="863" />
     </state>
     <state x="607" y="150" width="380" height="564" key="#com.intellij.ide.util.MemberChooser/0.0.1600.863@0.0.1600.863" timestamp="1590401947585" />
-    <state width="1554" height="214" key="GridCell.Tab.0.bottom" timestamp="1590407280317">
+    <state width="1554" height="214" key="GridCell.Tab.0.bottom" timestamp="1590407722958">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.bottom/0.0.1600.863@0.0.1600.863" timestamp="1590407280317" />
-    <state width="1554" height="214" key="GridCell.Tab.0.center" timestamp="1590407280316">
+    <state width="1554" height="214" key="GridCell.Tab.0.bottom/0.0.1600.863@0.0.1600.863" timestamp="1590407722958" />
+    <state width="1554" height="214" key="GridCell.Tab.0.center" timestamp="1590407722957">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.center/0.0.1600.863@0.0.1600.863" timestamp="1590407280316" />
-    <state width="1554" height="214" key="GridCell.Tab.0.left" timestamp="1590407280316">
+    <state width="1554" height="214" key="GridCell.Tab.0.center/0.0.1600.863@0.0.1600.863" timestamp="1590407722957" />
+    <state width="1554" height="214" key="GridCell.Tab.0.left" timestamp="1590407722957">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.left/0.0.1600.863@0.0.1600.863" timestamp="1590407280316" />
-    <state width="1554" height="214" key="GridCell.Tab.0.right" timestamp="1590407280316">
+    <state width="1554" height="214" key="GridCell.Tab.0.left/0.0.1600.863@0.0.1600.863" timestamp="1590407722957" />
+    <state width="1554" height="214" key="GridCell.Tab.0.right" timestamp="1590407722958">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
-    <state width="1554" height="214" key="GridCell.Tab.0.right/0.0.1600.863@0.0.1600.863" timestamp="1590407280316" />
+    <state width="1554" height="214" key="GridCell.Tab.0.right/0.0.1600.863@0.0.1600.863" timestamp="1590407722958" />
     <state x="295" y="67" key="SettingsEditor" timestamp="1590387634424">
       <screen x="0" y="0" width="1600" height="863" />
     </state>
