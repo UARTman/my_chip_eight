@@ -1,5 +1,6 @@
 use rand::Rng;
 
+#[derive(Copy, Clone)]
 pub struct RNG(rand::rngs::ThreadRng);
 
 impl RNG {

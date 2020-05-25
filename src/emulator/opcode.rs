@@ -434,7 +434,7 @@ impl From<(u8, u8)> for OpCode {
     }
 }
 
-#[allow(dead_code)]
+#[cfg(test)]
 fn split_bytes(b: u16) -> (u8, u8) {
     ((b >> 8) as u8, (b % (1 << 8)) as u8)
 }
