@@ -12,7 +12,7 @@ use crate::emulator::opcode::OpCode::*;
 /// - `PC`: Program counter, represented by variable `Emulator::program_counter`
 /// - `I`: Index Register, represented by variable `Emulator::index_register`
 /// - `VN`: `N`-th register, represented by variable `Emulator::registers[N]`
-#[derive(Eq, PartialEq, Copy, Clone)]
+#[derive(Eq, PartialEq, Copy, Clone, Debug)]
 pub enum OpCode {
     /// `0x0NNN`, where
     /// - `NNN` is `target`
@@ -431,5 +431,361 @@ impl From<(u8, u8)> for OpCode {
                 first_byte
             ),
         }
+    }
+}
+
+#[allow(dead_code)]
+fn split_bytes(b: u16) -> (u8, u8) {
+    ((b >> 8) as u8, (b % (1 << 8)) as u8)
+}
+
+/// OpCode parsing tests
+///
+/// Implemented:
+/// - [x] _NativeCall
+/// - [x] ClearScreen
+/// - [x] Return
+/// - [x] Goto
+/// - [x] Subroutine
+/// - [x] SkipNextIfRegEqualToConst
+/// - [x] SkipNextIfRegNotEqualToConst
+/// - [x] SkipNextIfRegEqualToReg
+/// - [x] RegSetConst
+/// - [x] RegAddConst
+/// - [x] RegMov
+/// - [x] RegBitwiseOr
+/// - [x] RegBitwiseAnd
+/// - [x] RegBitwiseXor
+/// - [x] RegAdd
+/// - [x] RegSub
+/// - [x] RegRightShift
+/// - [x] RegReverseSub
+/// - [x] RegLeftShift
+/// - [x] SkipNextIfRegNotEqualToReg
+/// - [x] Mem
+/// - [x] JumpRegZero
+/// - [x] RandToReg
+/// - [x] DisplaySprite
+/// - [x] SkipNextIfRegKeyPressed
+/// - [x] SkipNextIfRegKeyNotPressed
+/// - [x] SetRegToDelayTimer
+/// - [x] SetRegToKeyPressed
+/// - [x] SetDelayTimerToReg
+/// - [x] SetSoundTimerToReg
+/// - [x] MemAddReg
+/// - [x] MemMoveToCharReg
+/// - [x] StoreBCD
+/// - [x] RegDump
+/// - [x] RegLoad
+#[cfg(test)]
+mod tests {
+    use crate::emulator::opcode::OpCode::*;
+    use crate::emulator::opcode::{split_bytes, OpCode};
+
+    fn assert_code(code: u16, opcode: OpCode) {
+        let n = code;
+        let o = OpCode::from(split_bytes(n));
+        assert_eq!(o, opcode)
+    }
+
+    /// Test _NativeCall generation
+    #[test]
+    fn test_native_call() {
+        assert_code(0x0123, _NativeCall { target: 0x123 })
+    }
+
+    /// Test ClearScreen generation
+    #[test]
+    fn test_clear_screen() {
+        assert_code(0x00E0, ClearScreen);
+    }
+
+    ///Test Return generation
+    #[test]
+    fn test_return() {
+        assert_code(0x00EE, Return);
+    }
+
+    /// Test Goto generation
+    #[test]
+    fn test_goto() {
+        assert_code(0x1123, Goto { target: 0x123 });
+    }
+
+    /// Test Subroutine generation
+    #[test]
+    fn test_subroutine() {
+        assert_code(0x2123, Subroutine { target: 0x123 });
+    }
+
+    /// Test SkipNextIfRegEqualToConst generation
+    #[test]
+    fn test_skip_reg_eq_const() {
+        assert_code(
+            0x3123,
+            SkipNextIfRegEqualToConst {
+                register: 0x1,
+                constant: 0x23,
+            },
+        );
+    }
+
+    /// Test SkipNextIfReqNotEqualToConst generation
+    #[test]
+    fn test_skip_reg_neq_const() {
+        assert_code(
+            0x4123,
+            SkipNextIfRegNotEqualToConst {
+                register: 0x1,
+                constant: 0x23,
+            },
+        );
+    }
+
+    /// Test SkipNextIfRegEqualToReg generation
+    #[test]
+    fn test_skip_reg_eq_reg() {
+        assert_code(
+            0x5120,
+            SkipNextIfRegEqualToReg {
+                register_x: 0x1,
+                register_y: 0x2,
+            },
+        );
+    }
+
+    /// Test RegSetConst generation
+    #[test]
+    fn test_reg_set_const() {
+        assert_code(
+            0x6123,
+            RegSetConst {
+                register: 0x1,
+                constant: 0x23,
+            },
+        );
+    }
+
+    /// Test RegAddConst generation
+    #[test]
+    fn test_reg_add_const() {
+        assert_code(
+            0x7123,
+            RegAddConst {
+                register: 0x1,
+                constant: 0x23,
+            },
+        );
+    }
+
+    /// Test RegMov generation
+    #[test]
+    fn test_reg_mov() {
+        assert_code(
+            0x8120,
+            RegMov {
+                register_x: 0x1,
+                register_y: 0x2,
+            },
+        );
+    }
+
+    ///Test RegBitwiseOr generation
+    #[test]
+    fn test_reg_bit_or() {
+        assert_code(
+            0x8341,
+            RegBitwiseOr {
+                register_x: 0x3,
+                register_y: 0x4,
+            },
+        );
+    }
+
+    /// Test RegBitwiseAnd generation
+    #[test]
+    fn test_reg_bit_and() {
+        assert_code(
+            0x8342,
+            RegBitwiseAnd {
+                register_x: 0x3,
+                register_y: 0x4,
+            },
+        );
+    }
+
+    /// Test RegBitwiseXor generation
+    #[test]
+    fn test_reg_bit_xor() {
+        assert_code(
+            0x8123,
+            RegBitwiseXor {
+                register_x: 0x1,
+                register_y: 0x2,
+            },
+        );
+    }
+
+    /// Test RegAdd generation
+    #[test]
+    fn test_reg_add() {
+        assert_code(
+            0x8124,
+            RegAdd {
+                register_x: 0x1,
+                register_y: 0x2,
+            },
+        );
+    }
+
+    /// Test RegSub generation
+    #[test]
+    fn test_reg_sub() {
+        assert_code(
+            0x8125,
+            RegSub {
+                register_x: 0x1,
+                register_y: 0x2,
+            },
+        );
+    }
+
+    /// Test RegRightShift generation
+    #[test]
+    fn test_reg_rshift() {
+        assert_code(0x8126, RegRightShift { register: 0x1 });
+    }
+
+    /// Test RegReverseRub generation
+    #[test]
+    fn test_reg_reverse_sub() {
+        assert_code(
+            0x8127,
+            RegReverseSub {
+                register_x: 0x1,
+                register_y: 0x2,
+            },
+        )
+    }
+
+    /// Test RegLeftShift generation
+    #[test]
+    fn test_reg_lshift() {
+        assert_code(0x812E, RegLeftShift { register: 0x1 })
+    }
+
+    /// Test SkipNextIfRegNotEqualToReg generation
+    #[test]
+    fn test_skip_reg_neq_reg() {
+        assert_code(
+            0x9120,
+            SkipNextIfRegNotEqualToReg {
+                register_x: 0x1,
+                register_y: 0x2,
+            },
+        )
+    }
+
+    /// Test Mem generation
+    #[test]
+    fn test_mem() {
+        assert_code(0xA123, Mem { target: 0x123 })
+    }
+
+    /// Test JumpRegZero generation
+    #[test]
+    fn test_jump_reg0() {
+        assert_code(0xB123, JumpRegZero { target: 0x123 })
+    }
+
+    /// Test RandToReg generation
+    #[test]
+    fn test_rand2reg() {
+        assert_code(
+            0xC123,
+            RandToReg {
+                register: 0x1,
+                constant: 0x23,
+            },
+        )
+    }
+
+    /// Test DisplaySprite generation
+    #[test]
+    fn test_display_sprite() {
+        assert_code(
+            0xD123,
+            DisplaySprite {
+                coord_x: 0x1,
+                coord_y: 0x2,
+                height: 0x3,
+            },
+        )
+    }
+
+    /// Test SkipNextIfRegKeyPressed generation
+    #[test]
+    fn test_skip_key() {
+        assert_code(0xE19E, SkipNextIfRegKeyPressed { register: 0x1 })
+    }
+
+    /// Test SkipNextIfRegKeyNotPressed generation
+    #[test]
+    fn test_skip_not_key() {
+        assert_code(0xE2A1, SkipNextIfRegKeyNotPressed { register: 0x2 })
+    }
+
+    /// Test SetRegToDelayTimer generation
+    #[test]
+    fn test_reg2delay() {
+        assert_code(0xF107, SetRegToDelayTimer { register: 0x1 })
+    }
+
+    /// Test SetRegToKeyPressed generation
+    #[test]
+    fn test_key2reg() {
+        assert_code(0xF10A, SetRegToKeyPressed { register: 0x1 })
+    }
+
+    /// Test SetDelayTimerToReg generation
+    #[test]
+    fn test_delay2reg() {
+        assert_code(0xF215, SetDelayTimerToReg { register: 0x2 })
+    }
+
+    /// Test SetSoundTimerToReg generation
+    #[test]
+    fn test_sound2reg() {
+        assert_code(0xF218, SetSoundTimerToReg { register: 0x2 })
+    }
+
+    /// Test MemAddReg generation
+    #[test]
+    fn test_mem_add_reg() {
+        assert_code(0xF21E, MemAddReg { register: 0x2 })
+    }
+
+    /// Test MemMoveToCharReg generation
+    #[test]
+    fn test_mem_move_char() {
+        assert_code(0xF129, MemMoveToRegChar { register: 0x1 })
+    }
+
+    /// Test StoreBCD generation
+    #[test]
+    fn test_store_bcd() {
+        assert_code(0xF133, StoreBCD { register: 0x1 })
+    }
+
+    /// Test RegDump generation
+    #[test]
+    fn test_reg_dump() {
+        assert_code(0xF155, RegDump { register: 0x1 })
+    }
+
+    /// Test RegLoad generation
+    #[test]
+    fn test_reg_load() {
+        assert_code(0xF165, RegLoad { register: 0x1 })
     }
 }
