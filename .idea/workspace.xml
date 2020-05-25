@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:whitesource" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d7459ed9-f711-439b-a318-116828dddad8" name="Default Changelist" comment="Add testing to all opcodes." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="h3plw181" />
+  </component>
+  <component name="ProjectId" id="1cMUZtOWLQfmj0gs7GoNxvpzGns" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+  </component>
+  <component name="RunManager" selected="Cargo Command.Run my_chip_eight">
+    <configuration name="Clippy" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="clippy" />
+      <option name="allFeatures" value="false" />
+      <option name="nocapture" value="true" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Fmt" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="fmt" />
+      <option name="allFeatures" value="false" />
+      <option name="nocapture" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run my_chip_eight" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package my_chip_eight --bin my_chip_eight" />
+      <option name="allFeatures" value="false" />
+      <option name="nocapture" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Test" run_configuration_type="CargoCommandRunConfiguration" />
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Clippy" run_configuration_type="CargoCommandRunConfiguration" />
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Fmt" run_configuration_type="CargoCommandRunConfiguration" />
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test" />
+      <option name="allFeatures" value="false" />
+      <option name="nocapture" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Cargo Command.Test" />
+      <item itemvalue="Cargo Command.Clippy" />
+      <item itemvalue="Cargo Command.Fmt" />
+      <item itemvalue="Cargo Command.Run my_chip_eight" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo Command.Run my_chip_eight" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d7459ed9-f711-439b-a318-116828dddad8" name="Default Changelist" comment="" />
+      <created>1590338015007</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590338015007</updated>
+      <workItem from="1590338016886" duration="7945000" />
+      <workItem from="1590386399652" duration="10480000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add GH Actions and Issue Template">
+      <created>1590338161831</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590338161831</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Tweak docs a bit more">
+      <created>1590339492542</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1590339492542</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Create a bytes to opcode converter function">
+      <created>1590390427311</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590390427311</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Autoformatter pass">
+      <created>1590390514540</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1590390514540</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Another fmt pass">
+      <created>1590390591430</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1590390591430</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add some operations + tweak docs">
+      <created>1590391300143</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590391300143</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add testing to all opcodes.">
+      <created>1590397304064</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1590397304064</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add GH Actions and Issue Template" />
+    <MESSAGE value="Tweak docs a bit more" />
+    <MESSAGE value="Create a bytes to opcode converter function" />
+    <MESSAGE value="Autoformatter pass" />
+    <MESSAGE value="Another fmt pass" />
+    <MESSAGE value="Add some operations + tweak docs" />
+    <MESSAGE value="Add testing to all opcodes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add testing to all opcodes." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="257" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590390559438">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state x="257" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.863@0.0.1600.863" timestamp="1590390559438" />
+    <state x="607" y="150" width="380" height="564" key="#com.intellij.ide.util.MemberChooser" timestamp="1590386458795">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state x="607" y="150" width="380" height="564" key="#com.intellij.ide.util.MemberChooser/0.0.1600.863@0.0.1600.863" timestamp="1590386458795" />
+    <state width="1554" height="214" key="GridCell.Tab.0.bottom" timestamp="1590397270374">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state width="1554" height="214" key="GridCell.Tab.0.bottom/0.0.1600.863@0.0.1600.863" timestamp="1590397270374" />
+    <state width="1554" height="214" key="GridCell.Tab.0.center" timestamp="1590397270374">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state width="1554" height="214" key="GridCell.Tab.0.center/0.0.1600.863@0.0.1600.863" timestamp="1590397270374" />
+    <state width="1554" height="214" key="GridCell.Tab.0.left" timestamp="1590397270373">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state width="1554" height="214" key="GridCell.Tab.0.left/0.0.1600.863@0.0.1600.863" timestamp="1590397270373" />
+    <state width="1554" height="214" key="GridCell.Tab.0.right" timestamp="1590397270374">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state width="1554" height="214" key="GridCell.Tab.0.right/0.0.1600.863@0.0.1600.863" timestamp="1590397270374" />
+    <state x="295" y="67" key="SettingsEditor" timestamp="1590387634424">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state x="295" y="67" key="SettingsEditor/0.0.1600.863@0.0.1600.863" timestamp="1590387634424" />
+    <state x="0" y="163" width="806" height="536" key="Vcs.Push.Dialog.v2" timestamp="1590397306578">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state x="0" y="163" width="806" height="536" key="Vcs.Push.Dialog.v2/0.0.1600.863@0.0.1600.863" timestamp="1590397306578" />
+    <state x="192" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590340898086">
+      <screen x="0" y="0" width="1600" height="863" />
+    </state>
+    <state x="192" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.863@0.0.1600.863" timestamp="1590340898086" />
+  </component>
+</project>
