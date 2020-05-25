@@ -116,10 +116,7 @@ pub enum OpCode {
     ///
     /// Sets `VX` to a `VX >> 1`
     /// `VF` is set to `VX`'s least significant bit. TODO: Try to understand what this means
-    RegRightShift {
-        register: u8,
-        // register_y: u8,
-    },
+    RegRightShift { register: u8 },
     /// `0x8XY7`, where
     /// - `X` is `register_x`
     /// - `Y` is `register_y`
@@ -133,10 +130,7 @@ pub enum OpCode {
     ///
     /// Sets `VX` to a `VX << 1`
     /// `VF` is set to `VX`'s most significant bit. TODO: Try to understand what this means
-    RegLeftShift {
-        register: u8,
-        // register_y: u8,
-    },
+    RegLeftShift { register: u8 },
     /// `0x9XY0`, where
     /// - `X` is `register_x`
     /// - `Y` is `register_y`
