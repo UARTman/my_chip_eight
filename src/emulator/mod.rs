@@ -25,5 +25,5 @@ pub struct Emulator {
     /// Delay Timer
     pub delay_timer: u8,
     /// Sound timer
-    pub sound_timer: u8
+    pub sound_timer: u8,
 }
